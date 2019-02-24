@@ -1,2 +1,0 @@
-web: npm run build && node ./build/index.js
-log: tail -f log/development.log
