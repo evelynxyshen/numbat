@@ -11,7 +11,7 @@
     "clean": "rm -rf build && mkdir build",
     "build": "npm run clean && babel src -d dist",
     "server": "nodemon dist/index.js --exec node",
-    "heroku-postbuild": "npm install",
+    "heroku-postbuild": "npm install && npm install --save babel-cli && npm run build",
     "start": "node dist/index.js"
   },
   "dependencies": {
