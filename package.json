@@ -8,9 +8,11 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "server": "nodemon server.js --exec node",
+    "clean": "rm -rf build && mkdir build",
+    "build": "npm run clean && babel src -d dist",
+    "server": "nodemon dist/index.js --exec node",
     "heroku-postbuild": "npm install",
-    "start": "node server.js"
+    "start": "node dist/index.js"
   },
   "dependencies": {
     "babel-cli": "^6.26.0",
