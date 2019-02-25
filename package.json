@@ -9,9 +9,8 @@
   "scripts": {
     "build-babel": "./node_modules/.bin/babel -d ./build ./src -s",
     "clean": "rm -rf build && mkdir build",
-    "build": "npm run clean && npm run build-babel",
+    "build": "npm run clean && npm install && npm run build-babel",
     "start": "npm run build && node ./build/index.js",
-    "heroku-postbuild": "npm install",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
