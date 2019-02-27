@@ -9,24 +9,30 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "clean": "rm -rf build && mkdir build",
-    "build": "npm run clean && babel src -d dist",
+    "babel": "babel src -d dist",
+    "pack": "webpack --config webpack.config.js",
+    "build": "npm run clean && npm run babel",
     "server": "nodemon dist/index.js --exec node",
     "heroku-postbuild": "npm install && npm install --save babel-cli && npm run build",
     "start": "node dist/index.js"
   },
   "dependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-preset-env": "^1.7.0",
-    "ejs": "^2.5.6",
     "express": "^4.15.2",
     "path": "^0.12.7",
     "react": "^16.8.3",
     "react-dom": "^16.8.3"
   },
   "devDependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.3.4",
+    "@babel/preset-env": "^7.3.4",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.5",
     "nodemon": "^1.18.10",
     "request": "^2.81.0",
-    "tape": "^4.7.0"
+    "tape": "^4.7.0",
+    "webpack": "^4.29.5",
+    "webpack-cli": "^3.2.3"
   },
   "repository": {
     "type": "git",

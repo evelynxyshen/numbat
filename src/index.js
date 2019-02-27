@@ -1,4 +1,5 @@
 import path from "path";
+import express from "express";
 
 import React from "react";
 import { renderToString } from "react-dom/server";
@@ -11,7 +12,7 @@ app.use( express.static( path.resolve( __dirname, "public" ) ) );
 
 app.get( "/*", ( req, res ) => {
   const jsx = ( <Layout /> );
-  const reactDom = renderToString( jsx );
+  const reactDom = renderToString( jsx);
 
   res.writeHead( 200, { "Content-Type": "text/html" } );
   res.end( htmlTemplate( reactDom ) );
