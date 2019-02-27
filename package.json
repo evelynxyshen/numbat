@@ -13,7 +13,7 @@
     "pack": "webpack --config webpack.config.js",
     "build": "npm run clean && npm run babel",
     "server": "nodemon dist/index.js --exec node",
-    "heroku-postbuild": "npm install && npm install --save babel-cli && npm run build",
+    "heroku-postbuild": "npm install && npm install && npm run build",
     "start": "node dist/index.js"
   },
   "dependencies": {
