@@ -5,30 +5,39 @@
   "engines": {
     "node": "10.x"
   },
-  "main": "index.js",
+  "main": "webpack.config.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "clean": "rm -rf dist && mkdir dist",
     "babel": "babel src -d dist",
-    "pack": "webpack --config webpack.config.js",
-    "build": "npm run clean && npm run babel",
-    "server": "nodemon dist/index.js --exec node",
+    "build": "npm run clean && NODE_ENV=production webpack --progress",
+    "clean": "rm -rf dist && mkdir dist",
+    "heroku-dev": "heroku local web",
+    "client": "webpack --progress --display-error-details --config webpack.config.js",
+    "dev": "npm run clean && npm-run-all --parallel server client",
     "heroku-postbuild": "npm install && npm install && npm run build",
-    "start": "node dist/index.js"
+    "server": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
     "express": "^4.15.2",
     "path": "^0.12.7",
     "react": "^16.8.3",
-    "react-dom": "^16.8.3"
+    "react-dom": "^16.8.3",
+    "react-loadable": "^5.5.0",
+    "react-router": "^4.3.1",
+    "react-router-dom": "^4.3.1",
+    "react-scripts": "2.1.5"
   },
   "devDependencies": {
     "@babel/cli": "^7.2.3",
     "@babel/core": "^7.3.4",
+    "@babel/plugin-syntax-dynamic-import": "^7.2.0",
     "@babel/preset-env": "^7.3.4",
     "@babel/preset-react": "^7.0.0",
+    "@babel/register": "^7.0.0",
     "babel-loader": "^8.0.5",
+    "babel-register": "^6.26.0",
     "nodemon": "^1.18.10",
+    "npm-run-all": "^4.1.5",
     "request": "^2.81.0",
     "tape": "^4.7.0",
     "webpack": "^4.29.5",
